@@ -1,0 +1,25 @@
+{
+  "content": [
+    {
+      "name": "PatientName",
+      "tag": "0x00100010"
+    },
+    {
+      "name": "KVP",
+      "tag": "0x00180060"
+    },
+    {
+      "name": "PatientID",
+      "tag": "0x00100020"
+    },
+    {
+      "name": "PatientBirthDate",
+      "tag": ""
+    },
+    {
+      "name": "PatientSex",
+      "tag": ""
+    }
+  ]
+}
+
