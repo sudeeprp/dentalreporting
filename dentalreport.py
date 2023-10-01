@@ -97,7 +97,6 @@ slice_mapping = {
 
 def allocate_indices(rn):
     region_number = int(rn)
-    print(region_number in slice_mapping)
     if region_number not in slice_mapping:
         return None 
     output_mapping = {}
@@ -106,23 +105,23 @@ def allocate_indices(rn):
     region_index = regions.index(region_number)
     for i in range(region_index, len(regions) + region_index):
         region = regions[i % len(regions)]
-        output_mapping[region] = (current_index, current_index + slice_mapping[region])
-        current_index += slice_mapping[region]+1
+        output_mapping[region] = (current_index, current_index + slice_mapping[region]-1)
+        current_index += slice_mapping[region]
     return output_mapping
 
 def begin_end_mapping(attributes, mapping):
     for region_number in mapping:
         current = mapping[region_number]
         if isinstance(current, tuple):
-            attributes[ str(region_number) + '_begin'] = str(current[0])
-            attributes[ str(region_number) + '_end'] = str(current[1])
+            attributes['r'+str(region_number) + '_begin'] = str(current[0])
+            attributes['r'+str(region_number) + '_end'] = str(current[1])
     return attributes
 
 
 def render_save_report(attributes, report_filepath):
     template_file = 'report_template.docx'  
     template = DocxTemplate(template_file)
-    to_fill_in = {'img1': 'result.jpg', 'img2': 'result.jpg','img_pan':'panaroma.jpg'}
+    to_fill_in = {'img_pan':'panaroma.jpg'}
     for key, value in to_fill_in.items():
         image = InlineImage(template, value)
         attributes[key] = image
