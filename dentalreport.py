@@ -28,14 +28,14 @@ def get_quadrant_and_region(region_number):
         '16': 'Upper right canine',
         '17': 'Upper right lateral incisor',
         '18': 'Upper right central incisor',
-        '31': 'Lower left third molar',
-        '32': 'Lower left second molar',
-        '33': 'Lower left first molar',
-        '34': 'Lower left second premolar',
-        '35': 'Lower left first premolar',
-        '36': 'Lower left canine',
-        '37': 'Lower left lateral incisor',
-        '38': 'Lower left central incisor',
+        '21': 'Lower left third molar',
+        '22': 'Lower left second molar',
+        '23': 'Lower left first molar',
+        '24': 'Lower left second premolar',
+        '25': 'Lower left first premolar',
+        '26': 'Lower left canine',
+        '27': 'Lower left lateral incisor',
+        '28': 'Lower left central incisor',
         '41': 'Lower right central incisor',
         '42': 'Lower right lateral incisor',
         '43': 'Lower right canine',
@@ -70,6 +70,12 @@ def find_patient_age(dob):
     age = today.year - year - ((today.month, today.day) < (month, day))
     return age
 
+def get_current_date():
+    return datetime.now().strftime("%Y-%m-%d")
+
+def get_current_datetime():
+    return datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
 slice_mapping = {
     18: 9,
     17: 9,
@@ -89,32 +95,29 @@ slice_mapping = {
     28: 9,
 }
 
-def get_slice_count(region_number):
-    if region_number in slice_mapping:
-        return slice_mapping[region_number]
-    else:
-        return 0  
-
-def calculate_slices(region_number):
-    if region_number in slice_mapping:
-        starting_index = 1 
-        ending_index = 0 
-        for region in slice_mapping:
-            if region == region_number:
-                ending_index = starting_index + get_slice_count(region_number) - 1
-                break
-            else:
-                starting_index += get_slice_count(region)
-        print(starting_index,ending_index)
-        return starting_index, ending_index
-    else:
+def allocate_indices(rn):
+    region_number = int(rn)
+    print(region_number in slice_mapping)
+    if region_number not in slice_mapping:
         return None 
+    output_mapping = {}
+    current_index = 1
+    regions = list(slice_mapping.keys())
+    region_index = regions.index(region_number)
+    for i in range(region_index, len(regions) + region_index):
+        region = regions[i % len(regions)]
+        output_mapping[region] = (current_index, current_index + slice_mapping[region])
+        current_index += slice_mapping[region]+1
+    return output_mapping
 
-def get_current_date():
-    return datetime.now().strftime("%Y-%m-%d")
+def begin_end_mapping(attributes, mapping):
+    for region_number in mapping:
+        current = mapping[region_number]
+        if isinstance(current, tuple):
+            attributes[ str(region_number) + '_begin'] = str(current[0])
+            attributes[ str(region_number) + '_end'] = str(current[1])
+    return attributes
 
-def get_current_datetime():
-    return datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
 
 def render_save_report(attributes, report_filepath):
     template_file = 'report_template.docx'  
@@ -125,3 +128,10 @@ def render_save_report(attributes, report_filepath):
         attributes[key] = image
     template.render(attributes) 
     template.save(report_filepath)
+
+
+
+
+
+
+

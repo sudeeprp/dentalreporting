@@ -15,13 +15,14 @@ while True:
 
     quadrant, region_name = dentalreport.get_quadrant_and_region(region_number)
     print(f"\nThe selected tooth is in the Quadrant: {quadrant} Region: {region_name}")
-    dentalreport.get_slice_count(region_number)
-    dentalreport.calculate_slices(region_number)
-    
-    attributes['RegionNumber'] = region_number
-    attributes['RegionName'] = region_name
+
     attributes['date_now'] = dentalreport.get_current_date()
     attributes['PatientAge'] = dentalreport.find_patient_age(attributes['PatientBirthDate'])
+
+    mapping = dentalreport.allocate_indices(region_number)
+    print(mapping)
+    attributes = dentalreport.begin_end_mapping(attributes,mapping)
+    print(attributes)
 
     confirm = input("\nContinue to generate a pre-filled report? (yes/no): ").lower()
     if confirm == 'no' or confirm == 'n':
