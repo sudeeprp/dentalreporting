@@ -9,7 +9,10 @@ import dicomreader
 while True:
     selected_folder = mainuiprompts.prompt_patient_folder()
     ds, attributes = dentalreport.get_dcm_attriutes(selected_folder)
-
+    
+    pixel_spacing = ds.get('PixelSpacing', 'Null')
+    pixels = int(pixel_spacing[1] * 1000)
+    
     print("\nPlease enter following details:")
     region_number = mainuiprompts.prompt_region_number()
 
@@ -19,6 +22,7 @@ while True:
     attributes['RegionName'] = region_name
     attributes['date_now'] = dentalreport.get_current_date()
     attributes['PatientAge'] = dentalreport.find_patient_age(attributes['PatientBirthDate'])
+    attributes['PixelSpacing'] = pixels 
 
     mapping = dentalreport.allocate_indices(region_number)
     attributes = dentalreport.begin_end_mapping(attributes,mapping)
