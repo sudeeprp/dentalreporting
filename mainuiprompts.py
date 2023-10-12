@@ -40,3 +40,7 @@ def prompt_region_number():
             image_path = 'pic4.png'
             img = Image.open(image_path)
             img.show()
+
+def prompt_num_of_implants():
+    implants = input("Number of implants:")
+    return int(implants)

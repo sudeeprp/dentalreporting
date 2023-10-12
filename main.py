@@ -5,6 +5,7 @@ import imageannotate
 import dentalreport
 import mainuiprompts
 import dicomreader
+from docxtpl import DocxTemplate
 
 while True:
     selected_folder = mainuiprompts.prompt_patient_folder()
@@ -18,6 +19,8 @@ while True:
 
     quadrant, region_name = dentalreport.get_quadrant_and_region(region_number)
     print(f"\nThe selected tooth is in the Quadrant: {quadrant} Region: {region_name}")
+
+    num_of_implants = mainuiprompts.prompt_num_of_implants()
 
     attributes['RegionName'] = region_name
     attributes['date_now'] = dentalreport.get_current_date()
@@ -48,12 +51,20 @@ while True:
 
         images.save("panaroma.jpg")
 
+        template_file = 'report_template.docx'  
         filename = dicomreader.get_patinet_name(ds)
         report_filename = f"{filename}_{dentalreport.get_current_datetime()}.docx"
         report_filepath = os.path.join(selected_folder, report_filename)
-        dentalreport.render_save_report(attributes, report_filepath)
+        
+        template = DocxTemplate(template_file)
+        attributes = dentalreport.addvirtual_implant_save(attributes,num_of_implants,template)
+        
+        dentalreport.render_save_report(template,attributes, report_filename)
 
+        
+        
         print("\nSuccessfully generated report!!")
         print("\tAt:", selected_folder)
         print("\tAs:", report_filename)
         print()
+    

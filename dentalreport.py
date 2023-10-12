@@ -1,11 +1,10 @@
 import pydicom
 from datetime import datetime
-
 from docxtpl import InlineImage
 import json
 import numpy as np
-from docxtpl import DocxTemplate
 
+from docx.shared import RGBColor
 import dicomreader
 
 def validate_region_number(region_number):
@@ -118,9 +117,7 @@ def begin_end_mapping(attributes, mapping):
     return attributes
 
 
-def render_save_report(attributes, report_filepath):
-    template_file = 'report_template.docx'  
-    template = DocxTemplate(template_file)
+def render_save_report(template,attributes, report_filepath):
     to_fill_in = {'img_pan':'panaroma.jpg'}
     for key, value in to_fill_in.items():
         image = InlineImage(template, value)
@@ -128,9 +125,67 @@ def render_save_report(attributes, report_filepath):
     template.render(attributes) 
     template.save(report_filepath)
 
+def addvirtual_implant_save(attributes, num_rows, docxTemplate):
+    if num_rows == 0:
+        sd = docxTemplate.new_subdoc()
+        table = sd.add_table(rows=1, cols=1)
+        cell = table.cell(0, 0)
+        cell.text = "No virtual implants to be added"
+        '''for row in table.element.xpath('//w:tr'):
+            for cell in row.xpath('.//w:tcBorders'):
+                cell.attrib['w:color'] = RGBColor(0, 0, 0) 
 
+        for row in table.element.xpath('//w:t'):
+            run = row.getparent()
+            run.font.color.rgb = RGBColor(255, 0, 0)'''
 
+    else:
+        table = docxTemplate.new_subdoc('table', {'table': [{'col1': 'VIRTUAL IMPLANTS','col2':'LENGTH',
+                                                             'col3':'HEAD DIAMETER',
+                                                             'col4':'APTICAL DIAMETER',
+                                                             'col5':'ANY REMARKS'}]})
 
+        for row in table.element.xpath('//w:t'):
+            run = row.getparent()
+            run.font.color.rgb = RGBColor(255, 0, 0)  
+        for i in range(num_rows):
+               row_cells = table.rows[i].cells
+               row_cells[0].text = f'V{i + 1}' 
+               for j in range(1,table.cols):
+                  row_cells[j].text = ''
+
+    attributes['virtual_implant_table'] = sd
+    return attributes
+
+'''def addvirtual_implant_save_temp(input_file, output_file, num_of_implants):
+   document = Document(input_file)
+   num_columns = 5 
+   for paragraph in document.paragraphs:
+      print("debug1")
+      if '{{virtual_implant_table}}' in paragraph.text:
+         paragraph.clear()
+         if num_of_implants == 0:
+            table = document.paragraph.add_table(rows=1, cols=1)
+            cell = table.cell(0, 0)
+            cell.text = "No virtual implants to be added"
+         else:  
+            table = document.paragraph.add_table(rows=num_of_implants, cols=num_columns)
+            table.allow_autofit = False
+            print("debug3")
+            header_cells = table.rows[0].cells
+            header_cells[0].text = 'VIRTUAL IMPLANTS'
+            header_cells[1].text = 'LENGTH'
+            header_cells[2].text = 'HEAD DIAMETER'
+            header_cells[3].text = 'APICAL DIAMETER'
+            header_cells[4].text = 'ANY REMARKS'
+            for i in range(num_of_implants):
+               print("debug4")
+               row_cells = table.rows[i].cells
+               row_cells[0].text = f'V{i + 1}' 
+               for j in range(1, num_columns):
+                  row_cells[j].text = ''
+
+   document.save(output_file)'''
 
 
 
