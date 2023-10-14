@@ -51,7 +51,8 @@ while True:
 
         images.save("panaroma.jpg")
 
-        template_file = 'report_template.docx'  
+        template_file = 'report_template.docx' 
+         
         filename = dicomreader.get_patinet_name(ds)
         report_filename = f"{filename}_{dentalreport.get_current_datetime()}.docx"
         report_filepath = os.path.join(selected_folder, report_filename)

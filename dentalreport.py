@@ -1,6 +1,8 @@
 import pydicom
 from datetime import datetime
 from docxtpl import InlineImage
+from docx.shared import RGBColor
+from docxtpl import DocxTemplate
 import json
 import numpy as np
 
@@ -116,6 +118,31 @@ def begin_end_mapping(attributes, mapping):
             attributes['r'+str(region_number) + '_end'] = str(current[1])
     return attributes
 
+def addvirtual_implant_save(context, num_of_implants, tpl):
+    sd = tpl.new_subdoc()
+    cols =1 if num_of_implants ==0 else 5
+    table = sd.add_table(rows=1, cols=cols)
+    if num_of_implants == 0:
+        header = table.rows[0].cells
+        header[0].text = 'REMARKS'
+        cells = table.add_row().cells
+        cells[0].text = 'No virtual implants to be added'
+    else:
+        txt_cells = table.rows[0].cells
+        txt_cells[0].text = 'VIRTUAL IMPLANTS'
+        txt_cells[1].text = 'LENGTH'
+        txt_cells[2].text = 'HEAD DIAMETER'
+        txt_cells[3].text = 'APICAL DIAMETER'
+        txt_cells[4].text = 'ANY REMARKS'
+
+        for i in range(num_of_implants):
+            row_cells = table.add_row().cells
+            row_cells[0].text = f'V{i + 1}'
+            for j in range(1, 5):
+                row_cells[j].text = ''
+
+    context['virtual_implant_table'] = table
+    return context
 
 def render_save_report(template,attributes, report_filepath):
     to_fill_in = {'img_pan':'panaroma.jpg'}
@@ -125,37 +152,8 @@ def render_save_report(template,attributes, report_filepath):
     template.render(attributes) 
     template.save(report_filepath)
 
-def addvirtual_implant_save(attributes, num_rows, docxTemplate):
-    if num_rows == 0:
-        sd = docxTemplate.new_subdoc()
-        table = sd.add_table(rows=1, cols=1)
-        cell = table.cell(0, 0)
-        cell.text = "No virtual implants to be added"
-        '''for row in table.element.xpath('//w:tr'):
-            for cell in row.xpath('.//w:tcBorders'):
-                cell.attrib['w:color'] = RGBColor(0, 0, 0) 
 
-        for row in table.element.xpath('//w:t'):
-            run = row.getparent()
-            run.font.color.rgb = RGBColor(255, 0, 0)'''
 
-    else:
-        table = docxTemplate.new_subdoc('table', {'table': [{'col1': 'VIRTUAL IMPLANTS','col2':'LENGTH',
-                                                             'col3':'HEAD DIAMETER',
-                                                             'col4':'APTICAL DIAMETER',
-                                                             'col5':'ANY REMARKS'}]})
-
-        for row in table.element.xpath('//w:t'):
-            run = row.getparent()
-            run.font.color.rgb = RGBColor(255, 0, 0)  
-        for i in range(num_rows):
-               row_cells = table.rows[i].cells
-               row_cells[0].text = f'V{i + 1}' 
-               for j in range(1,table.cols):
-                  row_cells[j].text = ''
-
-    attributes['virtual_implant_table'] = sd
-    return attributes
 
 '''def addvirtual_implant_save_temp(input_file, output_file, num_of_implants):
    document = Document(input_file)
@@ -186,6 +184,4 @@ def addvirtual_implant_save(attributes, num_rows, docxTemplate):
                   row_cells[j].text = ''
 
    document.save(output_file)'''
-
-
 
