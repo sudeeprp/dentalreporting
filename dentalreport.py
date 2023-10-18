@@ -118,31 +118,6 @@ def begin_end_mapping(attributes, mapping):
             attributes['r'+str(region_number) + '_end'] = str(current[1])
     return attributes
 
-def addvirtual_implant_save(context, num_of_implants, tpl):
-    sd = tpl.new_subdoc()
-    cols =1 if num_of_implants ==0 else 5
-    table = sd.add_table(rows=1, cols=cols)
-    if num_of_implants == 0:
-        header = table.rows[0].cells
-        header[0].text = 'REMARKS'
-        cells = table.add_row().cells
-        cells[0].text = 'No virtual implants to be added'
-    else:
-        txt_cells = table.rows[0].cells
-        txt_cells[0].text = 'VIRTUAL IMPLANTS'
-        txt_cells[1].text = 'LENGTH'
-        txt_cells[2].text = 'HEAD DIAMETER'
-        txt_cells[3].text = 'APICAL DIAMETER'
-        txt_cells[4].text = 'ANY REMARKS'
-
-        for i in range(num_of_implants):
-            row_cells = table.add_row().cells
-            row_cells[0].text = f'V{i + 1}'
-            for j in range(1, 5):
-                row_cells[j].text = ''
-
-    context['virtual_implant_table'] = table
-    return context
 
 def render_save_report(template,attributes, report_filepath):
     to_fill_in = {'img_pan':'panaroma.jpg'}
@@ -153,35 +128,35 @@ def render_save_report(template,attributes, report_filepath):
     template.save(report_filepath)
 
 
+def addvirtual_implant_save(context, num_of_implants, tpl):
+    tpl = DocxTemplate(tpl)
+    sd = tpl.new_subdoc()
+    cols = 1 if num_of_implants == 0 else 5 
+    table = sd.add_table(rows=1, cols=cols)
+    if num_of_implants == 0:
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = 'Remarks'
+        row_cells = table.add_row().cells
+        row_cells[0].text = 'No Virtual Implants found'
+    else:
+        hdr_cells = table.rows[0].cells
+        hdr_cells[0].text = 'VIRTUAL IMPLANTS'
+        hdr_cells[1].text = 'LENGTH'
+        hdr_cells[2].text = 'HEAD DIAMETER'
+        hdr_cells[3].text = 'APICAL DIAMETER'
+        hdr_cells[4].text = 'ANY REMARKS'
 
+        for i in range(num_of_implants):
+            print(i)
+            row_cells = table.add_row().cells
+            row_cells[0].text = f'V{i + 1}'
+            for j in range(1, 5):
+                row_cells[j].text = ''
 
-'''def addvirtual_implant_save_temp(input_file, output_file, num_of_implants):
-   document = Document(input_file)
-   num_columns = 5 
-   for paragraph in document.paragraphs:
-      print("debug1")
-      if '{{virtual_implant_table}}' in paragraph.text:
-         paragraph.clear()
-         if num_of_implants == 0:
-            table = document.paragraph.add_table(rows=1, cols=1)
-            cell = table.cell(0, 0)
-            cell.text = "No virtual implants to be added"
-         else:  
-            table = document.paragraph.add_table(rows=num_of_implants, cols=num_columns)
-            table.allow_autofit = False
-            print("debug3")
-            header_cells = table.rows[0].cells
-            header_cells[0].text = 'VIRTUAL IMPLANTS'
-            header_cells[1].text = 'LENGTH'
-            header_cells[2].text = 'HEAD DIAMETER'
-            header_cells[3].text = 'APICAL DIAMETER'
-            header_cells[4].text = 'ANY REMARKS'
-            for i in range(num_of_implants):
-               print("debug4")
-               row_cells = table.rows[i].cells
-               row_cells[0].text = f'V{i + 1}' 
-               for j in range(1, num_columns):
-                  row_cells[j].text = ''
+    context['virtual_implant_table'] = sd
+    #return context
+    tpl.render(context)
+    tpl.save('testing.docx')
 
-   document.save(output_file)'''
-
+context = {}
+addvirtual_implant_save(context, 5, 'report_template.docx')
