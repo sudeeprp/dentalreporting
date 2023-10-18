@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trophy type="itoothcontext" version="1.1.0.0" description="3D Visualization Software context file" archived="0">
+  <trophyheader version="1.0.0.0">
+    <accesslog>
+      <creation datetime="2023-04-21T06:18:44+0000" applicationname="3D Visualization Application" applicationversion="3.10.21.0"/>
+      <modification datetime="2023-04-21T06:18:44+0000" applicationname="3D Visualization Application" applicationversion="3.10.21.0"/>
+      <modification datetime="2023-04-21T06:18:44+0000" applicationname="SDK3DDataAccess" applicationversion="1.0.11" uid="1.2.250.1.90.1.33901364.20230421114848.6324.7660"/>
+      <modification datetime="2023-04-21T06:46:16+0000" applicationname="3D Visualization Application" applicationversion="3.10.24.0"/>
+      <modification datetime="2023-04-21T09:37:41+0000" applicationname="3D Visualization Application" applicationversion="3.10.10.0"/>
+    </accesslog>
+  </trophyheader>
+  <IToothContext Uid="1.2.250.1.90.1.33901364.20230421114844.6552.9694" Version="6.0.0.0">
+    <Header>
+      <Name>Analysis</Name>
+      <Comment/>
+      <Reference>1.2.250.1.90.3.3706890026.20230421114839.1980.14</Reference>
+    </Header>
+    <VisuVolume>
+      <VolumeContext version="2">
+        <Volume version="1" current="FDK"/>
+        <Lut2D version="1.1" active="1" windowlevel="1048" windowwidth="4096"/>
+        <R3DModels>
+          <Model name="Realist" version="2.0">
+            <ClassesLimits Version="1.0">
+              <Skin min="2.44141e-005" max="0.169952"/>
+              <Flesh min="0.169952" max="0.409952"/>
+              <Bone min="0.409952" max="0.602215"/>
+              <Dentin min="0.602215" max="0.817309"/>
+              <Enamel min="0.817309" max="0.999928"/>
+              <Amalgam min="0.999928" max="0.999952"/>
+            </ClassesLimits>
+            <ColorSet Name="Realist" Version="1.0" Id="REALIST_200907021226">
+              <Opacity Value="1"/>
+              <Gradient Value="0"/>
+              <ClassColor>
+                <Skin H="29" S="60" V="83" A="0"/>
+                <Flesh H="29" S="37" V="89" A="0"/>
+                <Bone H="45" S="36" V="49.8" A="0"/>
+                <Dentin H="45" S="36" V="93.7" A="73"/>
+                <Enamel H="0" S="0" V="100" A="100"/>
+                <Amalgam H="0" S="0" V="100" A="100"/>
+              </ClassColor>
+              <LightParameters Ambient="0.3" Diffu="0.65" Specular="0.1" SuperSpecular="70"/>
+            </ColorSet>
+          </Model>
+        </R3DModels>
+        <Planes active="1" planes2D="1" planes3D="0" planes3Dmode="0"/>
+        <AxialPosition active="1"/>
+        <OrthoPositions active="1" x="169" y="169" z="173"/>
+        <CurvedPositions active="0" oblique="0" pano="0"/>
+        <OrientedPositions active="1" rPoint0="150" rPoint1="179" rPoint2="166" mat_0_0="-0.893113" mat_0_1="0" mat_0_2="0.449831" mat_0_3="390.591" mat_0_4="0.449831" mat_0_5="0" mat_0_6="0.893113" mat_0_7="57.4959" mat_0_8="0" mat_0_9="1" mat_0_10="-0" mat_0_11="-125" mat_0_12="0" mat_0_13="0" mat_0_14="0" mat_0_15="1" mat_1_0="0.449831" mat_1_1="0" mat_1_2="0.893113" mat_1_3="19.0991" mat_1_4="0.893113" mat_1_5="0" mat_1_6="-0.449831" mat_1_7="-80.896" mat_1_8="0" mat_1_9="1" mat_1_10="0" mat_1_11="-125" mat_1_12="0" mat_1_13="0" mat_1_14="0" mat_1_15="1" mat_2_0="1" mat_2_1="0" mat_2_2="0" mat_2_3="-122" mat_2_4="0" mat_2_5="1" mat_2_6="0" mat_2_7="-122" mat_2_8="0" mat_2_9="0" mat_2_10="1" mat_2_11="166" mat_2_12="0" mat_2_13="0" mat_2_14="0" mat_2_15="1"/>
+        <ResamplesTools version="1.1">
+          <ResamplesTool type="e_Arch" idTool="1" active="1">
+            <Resample id="0" offset="-6">
+              <CurveSurface height="332" bottom="0">
+                <Point x="46.7789" y="91.0401" z="176"/>
+                <Point x="117.194" y="136.307" z="176"/>
+                <Point x="153.408" y="200.687" z="176"/>
+                <Point x="167.491" y="267.079" z="176"/>
+                <Point x="169.503" y="328.441" z="176"/>
+                <Origin x="46.7789" y="91.0401" z="176"/>
+              </CurveSurface>
+              <Path position="143" width="331" height="332" angle="0"/>
+            </Resample>
+          </ResamplesTool>
+        </ResamplesTools>
+        <SegmentsTools version="2"/>
+        <CropBox active="1" enabled="0" point0="93.532" point1="18.1714" point2="164.024" point3="246.48" point4="321.841" point5="164.024" point6="321.841" point7="93.532" point8="164.024" point9="18.1712" point10="246.48" point11="164.024" point12="170.006" point13="170.006" point14="1.40417e-013" point15="170.006" point16="170.006" point17="328.048"/>
+        <Camera active="1" pos0="727.119" pos1="-372.289" pos2="487.984" focal0="168.734" focal1="168.734" focal2="165.6" vup0="-0.279454" vup1="0.262003" vup2="0.923721"/>
+        <Filters>
+          <Filter name="FILTER_ANTIGAUSSIAN" blend="1">
+            <Params K="2" Sigma="0.5"/>
+          </Filter>
+        </Filters>
+        <GraphicObjects version="2">
+          <Measures version="1.1">
+            <Global visibility="1"/>
+            <Measure objecttype="e_Measure2D_Segment" pipelinetype="PL_O2" active="1" visibility="1" objectInfo="1" R="0" G="1" B="0" viewindex="0">
+              <Point x="250.375" y="199.542" z="0"/>
+              <Point x="287.042" y="198.708" z="0"/>
+              <LabelPositioner x="267.042" y="218.292" z="0" itemId="0"/>
+            </Measure>
+            <Measure objecttype="e_Measure2D_Segment" pipelinetype="PL_O2" active="1" visibility="1" objectInfo="1" R="0" G="1" B="0" viewindex="0">
+              <Point x="245.375" y="225.375" z="0"/>
+              <Point x="294.542" y="225.792" z="0"/>
+              <LabelPositioner x="269.125" y="234.542" z="0" itemId="0"/>
+            </Measure>
+            <Measure objecttype="e_Measure2D_Segment" pipelinetype="PL_O2" active="1" visibility="1" objectInfo="1" R="0" G="1" B="0" viewindex="0">
+              <Point x="240.375" y="261.208" z="0"/>
+              <Point x="303.292" y="259.958" z="0"/>
+              <LabelPositioner x="278.292" y="267.875" z="0" itemId="0"/>
+            </Measure>
+          </Measures>
+          <Overlays version="1">
+            <Global visibility="1"/>
+          </Overlays>
+          <Grids version="1">
+            <Global visibility="1"/>
+          </Grids>
+          <Canals version="1.1">
+            <Global visibility="1"/>
+            <Canal objecttype="e_RootCanal" pipelinetype="PL_NONE" active="1" visibility="1" objectInfo="1" R="1" G="0.501961" B="0" radius="0.5">
+              <Point x="128.699" y="132.151" z="278.076"/>
+              <Point x="141.691" y="147.71" z="253.17"/>
+              <Point x="179.824" y="171.999" z="244.868"/>
+              <Point x="204.495" y="193.232" z="225.497"/>
+              <Point x="222.816" y="210.356" z="220.885"/>
+              <Point x="237.378" y="232.005" z="224.575"/>
+              <Point x="236.061" y="268.49" z="236.566"/>
+              <Point x="229.731" y="288.906" z="241.179"/>
+              <Point x="227.508" y="327.134" z="247.636"/>
+            </Canal>
+          </Canals>
+          <Implants version="1.5">
+            <Global visibility="1" objectInfo="1"/>
+          </Implants>
+          <Guides version="1.1">
+            <Global visibility="1"/>
+          </Guides>
+          <Resamples version="2">
+            <Global visibility="1"/>
+            <Resample objecttype="e_Resample_Arch" pipelinetype="PL_NONE" active="1" visibility="1" objectInfo="1" R="1" G="0.3" B="0.3"/>
+          </Resamples>
+          <Segments version="1">
+            <Global visibility="1"/>
+          </Segments>
+          <Meshes version="1">
+            <Global visibility="1"/>
+          </Meshes>
+          <Notes version="1">
+            <Global visibility="1"/>
+          </Notes>
+          <ClipSurfaces version="1">
+            <Global visibility="1"/>
+          </ClipSurfaces>
+          <Impressions version="1">
+            <Global visibility="1"/>
+          </Impressions>
+          <Crowns version="1">
+            <Global visibility="1"/>
+          </Crowns>
+          <Airways version="1.1">
+            <Global visibility="1" objectInfo="1"/>
+          </Airways>
+          <Labels version="1">
+            <Global visibility="1"/>
+          </Labels>
+          <FacialScanners version="1">
+            <Global visibility="1"/>
+          </FacialScanners>
+        </GraphicObjects>
+      </VolumeContext>
+    </VisuVolume>
+    <VisuLayout id="Implantology - 4 Views">
+      <LayoutContext version="1.4">
+        <LayoutType type="LYT_3DACS"/>
+        <PipelineLayoutInfo>
+          <PLInfo pipeline="PL_Z" format="LYT_FMT_5x5" step="7" thickness="1" thicknessmode="AVG">
+            <Roi x="0" y="0" width="655" height="330"/>
+          </PLInfo>
+        </PipelineLayoutInfo>
+        <CamerasInfo>
+          <Camera id="0" active="1" pos0="727.119" pos1="-372.289" pos2="487.984" focal0="168.734" focal1="168.734" focal2="165.6" vup0="-0.279454" vup1="0.262003" vup2="0.923721" parallelScale="217.844" parallelProjection="0"/>
+        </CamerasInfo>
+        <AxialPosition pos="173"/>
+      </LayoutContext>
+    </VisuLayout>
+    <VisuLayout id="Implantology - Implants">
+      <LayoutContext version="1.4">
+        <LayoutType type="LYT_PANORAMIC"/>
+        <PipelineLayoutInfo>
+          <PLInfo pipeline="PL_PANO" format="LYT_FMT_1x1" step="1" thickness="199" thicknessmode="AVG">
+            <Roi x="0" y="0" width="2146.33" height="775"/>
+          </PLInfo>
+          <PLInfo pipeline="PL_Z" format="LYT_FMT_1x1" step="1" thickness="1" thicknessmode="AVG">
+            <Roi x="0" y="0" width="660" height="556.667"/>
+          </PLInfo>
+        </PipelineLayoutInfo>
+        <CamerasInfo>
+          <Camera id="0" active="1" pos0="1129.83" pos1="-790.715" pos2="171.497" focal0="169" focal1="169" focal2="166" vup0="-0.00132473" vup1="0.00440173" vup2="0.999989" parallelScale="351.487" parallelProjection="0"/>
+        </CamerasInfo>
+        <AxialPosition pos="176"/>
+      </LayoutContext>
+    </VisuLayout>
+    <VisuLayout id="Implantology - Oblique Slicing">
+      <LayoutContext version="1.4">
+        <LayoutType type="LYT_ORIENTED"/>
+        <PipelineLayoutInfo>
+          <PLInfo pipeline="PL_O1" format="LYT_FMT_1x1" step="1" thickness="7" thicknessmode="AVG"/>
+          <PLInfo pipeline="PL_O2" format="LYT_FMT_1x1" step="1" thickness="25" thicknessmode="AVG"/>
+          <PLInfo pipeline="PL_O3" format="LYT_FMT_1x1" step="1" thickness="7" thicknessmode="AVG"/>
+        </PipelineLayoutInfo>
+        <CamerasInfo>
+          <Camera id="0" active="1" pos0="727.119" pos1="-372.289" pos2="487.984" focal0="168.734" focal1="168.734" focal2="165.6" vup0="-0.279454" vup1="0.262003" vup2="0.923721" parallelScale="217.844" parallelProjection="0"/>
+        </CamerasInfo>
+        <AxialPosition pos="0"/>
+      </LayoutContext>
+    </VisuLayout>
+    <VisuLayout id="Implantology - Review">
+      <LayoutContext version="1.4">
+        <LayoutType type="LYT_REVIEW"/>
+        <PipelineLayoutInfo>
+          <PLInfo pipeline="PL_STACK" format="LYT_FMT_LIST" step="1" thickness="1" thicknessmode="AVG" columnCount="2" viewPosition="0.519979">
+            <Roi x="0" y="0" width="577.333" height="461.333"/>
+          </PLInfo>
+        </PipelineLayoutInfo>
+        <CamerasInfo/>
+      </LayoutContext>
+    </VisuLayout>
+  </IToothContext>
+</trophy>
