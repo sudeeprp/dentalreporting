@@ -129,7 +129,6 @@ def render_save_report(template,attributes, report_filepath):
 
 
 def addvirtual_implant_save(context, num_of_implants, tpl):
-    tpl = DocxTemplate(tpl)
     sd = tpl.new_subdoc()
     cols = 1 if num_of_implants == 0 else 5 
     table = sd.add_table(rows=1, cols=cols)
@@ -152,11 +151,12 @@ def addvirtual_implant_save(context, num_of_implants, tpl):
             row_cells[0].text = f'V{i + 1}'
             for j in range(1, 5):
                 row_cells[j].text = ''
-
     context['virtual_implant_table'] = sd
-    #return context
-    tpl.render(context)
-    tpl.save('testing.docx')
+    return context
+    
+    #tpl = DocxTemplate(tpl)
+    #tpl.render(context)
+    #tpl.save('testing.docx')
 
-context = {}
-addvirtual_implant_save(context, 5, 'report_template.docx')
+'''context = {}
+addvirtual_implant_save(context, 5, 'report_template.docx')'''
