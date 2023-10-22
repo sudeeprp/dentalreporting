@@ -34,7 +34,6 @@ jobs:
         pip install pydicom
         pip install datetime
         pip install docxtpl
-        pip install json
         pip install numpy
         pip install argparse
         pip install imageprocess
