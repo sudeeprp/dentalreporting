@@ -36,7 +36,7 @@ jobs:
         pip install docxtpl
         pip install numpy
         pip install argparse
-        pip install cv2
+        pip install opencv-python
         pip install PIL
         pip install tkinter
     - name: Run python code
