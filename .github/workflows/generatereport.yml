@@ -39,6 +39,7 @@ jobs:
         pip install opencv-python
         pip install Pillow
         pip install tk
+        pip install image-process
     - name: Run python code
       run: |
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
