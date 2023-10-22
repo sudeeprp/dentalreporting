@@ -40,6 +40,7 @@ jobs:
         pip install Pillow
         pip install tk
         pip install image-process
+        pip install pylibjpeg
     - name: Run python code
       run: |
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
