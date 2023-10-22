@@ -56,6 +56,6 @@ jobs:
           run: |
             git config --local user.email "upadhyayamaanya@gmail.com"
             git config --local user.name "MaanyaUpadhyaya"
-            git add KAMALA
+            git add report_template.docx
             git commit -m "Final report" 
             git push
