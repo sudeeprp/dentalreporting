@@ -1,4 +1,4 @@
-name: Commandline
+name: GenerateReport
 
 on:
   workflow_dispatch:
