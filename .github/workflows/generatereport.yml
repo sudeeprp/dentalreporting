@@ -36,7 +36,6 @@ jobs:
         pip install docxtpl
         pip install numpy
         pip install argparse
-        pip install imageprocess
         pip install cv2
         pip install PIL
         pip install tkinter
