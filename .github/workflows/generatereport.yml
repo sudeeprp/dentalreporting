@@ -46,3 +46,18 @@ jobs:
       run: |
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
         python main.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
+        
+        steps: 
+          - name: Checkout Repository
+          uses: actions/checkout@v2  # Fetch the content of the repository
+
+          - name: Copy Saved Document
+          run: cp ./reports
+
+          - name: Commit and Push Changes
+          run: |
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add your_saved_document.txt
+            git commit -m "Final report" 
+            git push
