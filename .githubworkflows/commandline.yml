@@ -34,4 +34,4 @@ jobs:
     - name: Run python code
       run: |
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
-        python index.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
+        python main.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
