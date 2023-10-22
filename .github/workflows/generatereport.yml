@@ -41,6 +41,7 @@ jobs:
         pip install tk
         pip install image-process
         pip install pylibjpeg
+        pip install pylibjpeg-libjpeg
     - name: Run python code
       run: |
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
