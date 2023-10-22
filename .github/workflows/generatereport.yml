@@ -46,14 +46,15 @@ jobs:
       run: |
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
         python main.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
+    
+    - name: Checkout Repository
+    - uses: actions/checkout@v2  
         
-        steps: 
-        - name: Checkout Repository
-        - uses: actions/checkout@v2  
-        - name: Copy Saved Document
-          run: cp ./reports
-        - name: Commit and Push Changes
-          run: |
-            git add report_template.docx
-            git commit -m "Final report" 
-            git push
+    - name: Copy Saved Document
+      run: cp ./reports
+      
+    - name: Commit and Push Changes
+      run: |
+          git add report_template.docx
+          git commit -m "Final report" 
+          git push
