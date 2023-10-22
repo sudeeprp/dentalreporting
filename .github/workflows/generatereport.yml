@@ -54,8 +54,8 @@ jobs:
           run: cp ./reports
         - name: Commit and Push Changes
           run: |
-            git config --local user.email "@github.com"
-            git config --local user.name "GitHub Action"
-            git add your_saved_document.txt
+            git config --local user.email "upadhyayamaanya@gmail.com"
+            git config --local user.name "MaanyaUpadhyaya"
+            git add KAMALA
             git commit -m "Final report" 
             git push
