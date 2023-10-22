@@ -49,7 +49,7 @@ def get_quadrant_and_region(region_number):
     region_name = region_names.get(region_number, 'Null')
     return quadrant, region_name
 
-def get_dcm_attriutes(folder,):
+def get_dcm_attriutes(folder):
     dcm_file = dicomreader.get_dicom_file(folder)
     json_file = 'middle.json'  
 
@@ -144,7 +144,7 @@ def addvirtual_implant_save(context, num_of_implants, tpl):
         hdr_cells[2].text = 'HEAD DIAMETER'
         hdr_cells[3].text = 'APICAL DIAMETER'
         hdr_cells[4].text = 'ANY REMARKS'
-
+        num_of_implants = int(num_of_implants)
         for i in range(num_of_implants):
             print(i)
             row_cells = table.add_row().cells

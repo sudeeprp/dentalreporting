@@ -5,7 +5,6 @@ import dentalreport
 from PIL import Image
 
 def select_patient_folder():
-    while True:
         confirm = input("\nSelect a patient folder? (yes/no): ").lower()
         if confirm == 'no' or confirm == 'n':
             print("Thank you for using Autofill Reports!!\n")
