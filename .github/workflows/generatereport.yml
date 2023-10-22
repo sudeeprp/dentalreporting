@@ -54,8 +54,6 @@ jobs:
           run: cp ./reports
         - name: Commit and Push Changes
           run: |
-            git config --local user.email "upadhyayamaanya@gmail.com"
-            git config --local user.name "MaanyaUpadhyaya"
             git add report_template.docx
             git commit -m "Final report" 
             git push
