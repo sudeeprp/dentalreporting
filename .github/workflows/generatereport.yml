@@ -47,11 +47,12 @@ jobs:
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
         python main.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
     
-    - name: Checkout Repository
     - uses: actions/checkout@v2  
+    - name: Checkout Repository
         
     - name: Copy Saved Document
-      run: cp ./reports
+      run: |
+          cp ./reports
       
     - name: Commit and Push Changes
       run: |
