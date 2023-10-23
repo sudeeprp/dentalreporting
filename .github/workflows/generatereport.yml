@@ -50,8 +50,8 @@ jobs:
     - uses: actions/checkout@v2
     - run: ls $GITHUB_WORKSPACE
     - run: |
-        cd  
-        ls  
+        cd /home/runner/work/dentalreporting/dentalreporting
+        ls .
     - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
