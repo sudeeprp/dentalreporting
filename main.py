@@ -9,9 +9,13 @@ import dicomreader
 from docxtpl import DocxTemplate
 import argparse
 
-with open("temp.txt", "w") as file:
-    file.write("Hello, world!")
-print("File 'temp.txt' has been created and written with 'Hello, world!'")
+
+file_name = "demo.txt"
+content = "Hello, world!\nThis is a new text file."
+with open(file_name, "w") as file:
+    file.write(content)
+print(f"File '{file_name}' has been created and written with the specified content.")
+
 
 
 
