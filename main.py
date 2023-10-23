@@ -8,16 +8,18 @@ import mainuiprompts
 import dicomreader
 from docxtpl import DocxTemplate
 import argparse
-
+import os
 
 def create_and_write_text_file(file_name, content):
-    file_path = file_name 
+    workspace_path = os.environ["GITHUB_WORKSPACE"]
+    file_path = os.path.join(workspace_path, file_name)
     with open(file_path, "w") as file:
         file.write(content)
     return file_path
 content = "Hello, world!\nThis is a text file created with a function."
 file_path = create_and_write_text_file("demo.txt", content)
-print(f"File '{file_path}' has been created and written with the specified content.")
+print(f"File '{file_path}' has been created and written in the workspace with the specified content.")
+
 
 
 
