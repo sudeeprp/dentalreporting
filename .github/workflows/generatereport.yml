@@ -51,6 +51,6 @@ jobs:
     - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add reports/temp.txt
+          git add temp.txt
           git commit -m "Final report" 
           git push
