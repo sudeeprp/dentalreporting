@@ -10,17 +10,13 @@ from docxtpl import DocxTemplate
 import argparse
 import os
 
-def create_and_write_text_file(file_name, content):
-    workspace_path = os.environ["GITHUB_WORKSPACE"]
-    file_path = os.path.join(workspace_path, file_name)
-    with open(file_path, "w") as file:
-        file.write(content)
-    return file_path
-content = "Hello, world!\nThis is a text file created with a function."
-file_path = create_and_write_text_file("demo.txt", content)
-print(f"File '{file_path}' has been created and written in the workspace with the specified content.")
-
-
+folder_path = ''  
+file_name = 'example.txt'
+file_content = 'This is the content of the file.'
+file_path = os.path.join(folder_path, file_name)
+with open(file_path, 'w') as file:
+    file.write(file_content)
+print(f'File "{file_name}" has been created in the folder: {folder_path}')
 
 
 if len(sys.argv) != 1:
