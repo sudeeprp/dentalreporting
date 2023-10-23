@@ -10,12 +10,14 @@ from docxtpl import DocxTemplate
 import argparse
 
 
-file_name = "demo.txt"
-content = "Hello, world!\nThis is a new text file."
-with open(file_name, "w") as file:
-    file.write(content)
-print(f"File '{file_name}' has been created and written with the specified content.")
-
+def create_and_write_text_file(file_name, content):
+    file_path = file_name 
+    with open(file_path, "w") as file:
+        file.write(content)
+    return file_path
+content = "Hello, world!\nThis is a text file created with a function."
+file_path = create_and_write_text_file("demo.txt", content)
+print(f"File '{file_path}' has been created and written with the specified content.")
 
 
 
