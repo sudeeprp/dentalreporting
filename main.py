@@ -9,10 +9,10 @@ import dicomreader
 from docxtpl import DocxTemplate
 import argparse
 
-folder_name = "reports"
-with open(f"{folder_name}/temp.txt", "w") as file:
+with open("temp.txt", "w") as file:
     file.write("Hello, world!")
-print(f"File '{folder_name}/temp.txt' has been created and written with 'Hello, world!'")
+print("File 'temp.txt' has been created and written with 'Hello, world!'")
+
 
 
 if len(sys.argv) != 1:
