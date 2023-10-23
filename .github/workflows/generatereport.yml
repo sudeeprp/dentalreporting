@@ -47,10 +47,11 @@ jobs:
         echo "Your name is: ${{ github.event.inputs.folder_name}}"
         python main.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
     
-    - uses: actions/checkout@v2  
+    - uses: actions/checkout@v2
+    - run: cp ./report_template.docx ./reports
     - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add .
+          git add report_template.docx
           git commit -m "Final report" 
           git push
