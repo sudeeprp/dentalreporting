@@ -48,6 +48,7 @@ jobs:
         python main.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
     
     - uses: actions/checkout@v2
+    - run: ls $GITHUB_WORKSPACE
     - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
