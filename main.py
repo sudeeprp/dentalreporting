@@ -8,15 +8,6 @@ import mainuiprompts
 import dicomreader
 from docxtpl import DocxTemplate
 import argparse
-import os
-
-folder_path = '/home/runner/work/dentalreporting/dentalreporting'  
-file_name = 'example.txt'
-file_content = 'This is the content of the file.'
-file_path = os.path.join(folder_path, file_name)
-with open(file_path, 'w') as file:
-    file.write(file_content)
-print(f'File "{file_name}" has been created in the folder: {folder_path}')
 
 
 if len(sys.argv) != 1:
@@ -61,10 +52,6 @@ mapping = dentalreport.allocate_indices(region_number)
 
 attributes = dentalreport.begin_end_mapping(attributes,mapping)
 
-'''confirm = input("\nContinue to generate a pre-filled report? (yes/no): ").lower()
-if confirm == 'no' or confirm == 'n':
-    print("No report will be generated. Thank you.")
-else:'''
 windowed_pixel_array = imageprocess.get_windowed_pixels(ds)
 
 image = imageprocess.convert_pixel_to_image(windowed_pixel_array)
@@ -85,7 +72,8 @@ template_file = 'report_template.docx'
          
 filename = dicomreader.get_patinet_name(ds)
 report_filename = f"{filename}_{dentalreport.get_current_datetime()}.docx"
-report_filepath = os.path.join(selected_folder, report_filename)
+folder = "./reports/"
+report_filepath = os.path.join(folder, report_filename)
         
 template = DocxTemplate(template_file)
 attributes = dentalreport.addvirtual_implant_save(attributes,num_of_implants,template)
