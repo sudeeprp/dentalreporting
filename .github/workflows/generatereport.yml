@@ -56,6 +56,6 @@ jobs:
       
     - name: Commit and Push Changes
       run: |
-          git add report_template.docx
+          git add .
           git commit -m "Final report" 
           git push
