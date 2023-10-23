@@ -14,6 +14,7 @@ def create_and_write_text_file(file_name, content):
     file_path = file_name 
     with open(file_path, "w") as file:
         file.write(content)
+    print(file_path)
     return file_path
 content = "Hello, world!\nThis is a text file created with a function."
 file_path = create_and_write_text_file("demo.txt", content)
