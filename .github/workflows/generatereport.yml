@@ -44,17 +44,9 @@ jobs:
         pip install pylibjpeg-libjpeg
     - name: Run python code
       run: |
-        echo "Your name is: ${{ github.event.inputs.folder_name}}"
         python main.py -f ${{github.event.inputs.folder_name}} -rn ${{github.event.inputs.region_number}} -im ${{github.event.inputs.implant_number}}
-    
-    - uses: actions/checkout@v2
-    - run: ls $GITHUB_WORKSPACE
-    - run: |
-        cd /home/runner/work/dentalreporting/dentalreporting
-        ls .
-    - run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "Final report" 
-          git push
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Final report" 
+        git push
