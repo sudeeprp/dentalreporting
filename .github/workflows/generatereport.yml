@@ -50,6 +50,9 @@ jobs:
     - uses: actions/checkout@v2
     - run: ls $GITHUB_WORKSPACE
     - run: |
+        cd  
+        ls  
+    - run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
