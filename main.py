@@ -10,7 +10,7 @@ from docxtpl import DocxTemplate
 import argparse
 import os
 
-folder_path = ''  
+folder_path = '/home/runner/work/dentalreporting/dentalreporting'  
 file_name = 'example.txt'
 file_content = 'This is the content of the file.'
 file_path = os.path.join(folder_path, file_name)
