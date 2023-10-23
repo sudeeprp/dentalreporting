@@ -78,12 +78,12 @@ report_filepath = os.path.join(folder, report_filename)
 template = DocxTemplate(template_file)
 attributes = dentalreport.addvirtual_implant_save(attributes,num_of_implants,template)
         
-dentalreport.render_save_report(template,attributes, report_filename)
+dentalreport.render_save_report(template,attributes, report_filepath)
 
         
         
 print("\nSuccessfully generated report!!")
-print("\tAt:", selected_folder)
+print("\tAt:reports")
 print("\tAs:", report_filename)
 print()
 
