@@ -49,7 +49,7 @@ def get_quadrant_and_region(region_number):
     region_name = region_names.get(region_number, 'Null')
     return quadrant, region_name
 
-def get_dcm_attriutes(folder,):
+def get_dcm_attriutes(folder):
     dcm_file = dicomreader.get_dicom_file(folder)
     json_file = 'middle.json'  
 
@@ -118,16 +118,6 @@ def begin_end_mapping(attributes, mapping):
             attributes['r'+str(region_number) + '_end'] = str(current[1])
     return attributes
 
-
-def render_save_report(template,attributes, report_filepath):
-    to_fill_in = {'img_pan':'panaroma.jpg'}
-    for key, value in to_fill_in.items():
-        image = InlineImage(template, value)
-        attributes[key] = image
-    template.render(attributes) 
-    template.save(report_filepath)
-
-
 def addvirtual_implant_save(context, num_of_implants, tpl):
     sd = tpl.new_subdoc()
     cols = 1 if num_of_implants == 0 else 5 
@@ -144,7 +134,7 @@ def addvirtual_implant_save(context, num_of_implants, tpl):
         hdr_cells[2].text = 'HEAD DIAMETER'
         hdr_cells[3].text = 'APICAL DIAMETER'
         hdr_cells[4].text = 'ANY REMARKS'
-
+        num_of_implants = int(num_of_implants)
         for i in range(num_of_implants):
             print(i)
             row_cells = table.add_row().cells
@@ -153,10 +143,12 @@ def addvirtual_implant_save(context, num_of_implants, tpl):
                 row_cells[j].text = ''
     context['virtual_implant_table'] = sd
     return context
-    
-    #tpl = DocxTemplate(tpl)
-    #tpl.render(context)
-    #tpl.save('testing.docx')
 
-'''context = {}
-addvirtual_implant_save(context, 5, 'report_template.docx')'''
+def render_save_report(template,attributes, report_filepath):
+    to_fill_in = {'img_pan':'panaroma.jpg'}
+    for key, value in to_fill_in.items():
+        image = InlineImage(template, value)
+        attributes[key] = image
+    template.render(attributes) 
+    template.save(report_filepath)
+    
