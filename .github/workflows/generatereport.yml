@@ -12,7 +12,7 @@ on:
              required: true
              default: ""
       implant_number:
-             description: 'Nun_of_implants:'
+             description: 'Num_of_implants:'
              required: true
              default: ""
 
