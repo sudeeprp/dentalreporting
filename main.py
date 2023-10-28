@@ -30,11 +30,8 @@ else:
     print("\nPlease enter following details:")
     region_number = mainuiprompts.prompt_region_number()
     num_of_implants = mainuiprompts.prompt_num_of_implants()
-    
 
-    
-    
-    
+
 ds, attributes = dentalreport.get_dcm_attriutes(selected_folder)
 
 pixel_spacing = ds.get('PixelSpacing', 'Null')
@@ -51,6 +48,8 @@ attributes['PixelSpacing'] = pixels
 mapping = dentalreport.allocate_indices(region_number)
 
 attributes = dentalreport.begin_end_mapping(attributes,mapping)
+
+attributes = dentalreport.initial_mapping(attributes,mapping)
 
 windowed_pixel_array = imageprocess.get_windowed_pixels(ds)
 
@@ -80,8 +79,7 @@ attributes = dentalreport.addvirtual_implant_save(attributes,num_of_implants,tem
         
 dentalreport.render_save_report(template,attributes, report_filepath)
 
-        
-        
+       
 print("\nSuccessfully generated report!!")
 print("\tAt:reports")
 print("\tAs:", report_filename)

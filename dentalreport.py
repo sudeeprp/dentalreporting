@@ -111,6 +111,18 @@ def allocate_indices(rn):
     return output_mapping
 
 def begin_end_mapping(attributes, mapping):
+    rn_keys = list(mapping.keys())
+    n=1
+    for region_number in rn_keys:
+        current = mapping[region_number]
+        if isinstance(current, tuple):
+            attributes['region_r'+str(n)] = region_number
+            attributes['r'+str(n) + '_begin'] = str(current[0])
+            attributes['r'+str(n) + '_end'] = str(current[1])
+            n +=1
+    return attributes
+
+def initial_mapping(attributes, mapping):
     for region_number in mapping:
         current = mapping[region_number]
         if isinstance(current, tuple):
@@ -136,7 +148,6 @@ def addvirtual_implant_save(context, num_of_implants, tpl):
         hdr_cells[4].text = 'ANY REMARKS'
         num_of_implants = int(num_of_implants)
         for i in range(num_of_implants):
-            print(i)
             row_cells = table.add_row().cells
             row_cells[0].text = f'V{i + 1}'
             for j in range(1, 5):
