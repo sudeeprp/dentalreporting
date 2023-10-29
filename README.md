@@ -72,6 +72,10 @@ Step 3: An AI automation for canal tracking.
 | Pillow      | pip install pillow                         |
 | Docxtypl    | pip install docxtpl                        |
 
+On Ubuntu, you may have to additionally do the following:
+
+`apt-get update && apt-get install libgl1`
+
 3. Run python main.py
 
 ## Console-based Workflow:
